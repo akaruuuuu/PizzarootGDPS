@@ -22,6 +22,8 @@ if ($type == '0') {
 	$sql = "SELECT * FROM gdpsLevels ORDER BY likes DESC, downloads DESC LIMIT 10 OFFSET $offset";
 } elseif ($type == '4') {
 	$sql = "SELECT * FROM gdpsLevels ORDER BY lastUpdate DESC LIMIT 10 OFFSET $offset";
+} elseif ($type == '16'){
+	$sql = "SELECT * FROM gdpsLevels WHERE NOT starEpic = 0 ORDER BY lastUpdate DESC LIMIT 10 OFFSET $offset";
 } else {
 	die('-1');
 }
@@ -59,7 +61,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	while ($row2 = mysqli_fetch_assoc($result3)) {
 		$creatorsstring .= $row2['userID'].':'.$row2['userName'].':'.$row2['accountID'];
 	}
-	if ($songID != 0) {
+	if ($songID > 0) {
 		if ($songsstring != "") {
 			$songsstring .= "~:~";
 		}
@@ -70,7 +72,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 				$songsstring .= "1~|~".$songID."~|~2~|~".$row3['songName']."~|~3~|~".$row3['authorID']."~|~4~|~".$row3['authorName']."~|~5~|~6.9~|~6~|~~|~10~|~".urlencode($row3['downloadLink'])."~|~7~|~~|~8~|~0";
 			}
 		} else {
-			$songsstring .= "1~|~".$songID."~|~2~|~U suk dikis~|~3~|~69~|~4~|~PornHub~|~5~|~69.69~|~6~|~~|~10~|~".urlencode("http://pizzaroot.altervista.org/unarmed.mp3")."~|~7~|~~|~8~|~0";
+			$songsstring .= "1~|~".$songID."~|~2~|~Sakujes~|~3~|~69~|~4~|~Cvolton~|~5~|~4.20~|~6~|~~|~10~|~".urlencode("http://pizzaroot.altervista.org/unarmed.mp3")."~|~7~|~~|~8~|~0";
 		}
 	}
 }
